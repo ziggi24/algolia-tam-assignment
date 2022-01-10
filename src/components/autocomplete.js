@@ -1,5 +1,6 @@
 import algoliasearch from 'algoliasearch';
 import instantsearch from 'instantsearch.js';
+import { autocomplete } from '@algolia/autocomplete-js';
 
 // Instant Search Widgets
 import { hits, searchBox, configure } from 'instantsearch.js/es/widgets';
@@ -27,13 +28,10 @@ class Autocomplete {
    * @return {void}
    */
   _registerClient() {
-    this._searchClient = algoliasearch(
-      'VYLEWMPKEZ',
-      '8940a18fde155adf3f74b0912c267aa4'
-    );
+    this._searchClient = algoliasearch(process.env.APP_ID, process.env.API_KEY);
 
     this._searchInstance = instantsearch({
-      indexName: 'ecommerce-v2',
+      indexName: 'spencer_williams_data',
       searchClient: this._searchClient,
     });
   }
